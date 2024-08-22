@@ -1,0 +1,41 @@
+.container{
+    height: 100vh;
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.products{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card{
+    width: 15vw;
+    background-color: aqua;
+    border: solid 2px black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+h1{
+    text-align: center;
+}
+
+.button{
+    color: white;
+    background-color: black;
+    border-radius: 3px;
+    border: solid 2px black;
+}
+

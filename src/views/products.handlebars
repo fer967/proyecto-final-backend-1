@@ -1,0 +1,25 @@
+<div class="container" >
+    <h1>Mis Productos</h1>
+    <div class="products">
+        {{#each products}}
+        <div class="card">
+            <p>{{this.title}}</p>
+            <p>{{this.description}}</p>
+            <p>precio : ${{this.price}}</p>
+            <p>codigo : {{this.code}}</p>
+            <p>cantidad : {{this.stock}}</p>
+            <p>categoria : {{this.category}}</p>
+            <button class="button">agregar al carrito</button>
+        </div>
+        {{/each}}
+    </div>
+    <div class="pages">
+        {{#if hasPrevPage}}
+        <a href="/products?page={{prevPage}}">anterior</a>
+        {{/if}}
+        {{#if hasNextPage}}
+        <a href="/products?page={{nextPage}}">siguiente</a>
+        {{/if}}
+        <p>pagina {{currentPage}} de {{totalPages}}</p>
+    </div>
+</div>
