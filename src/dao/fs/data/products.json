@@ -1,0 +1,101 @@
+[
+    {
+        "title": "guitarra",
+        "description": "criolla",
+        "price": 1500,
+        "imagen": "sin imagen",
+        "code": "abc123",
+        "stock": 6,
+        "category": "cuerdas",
+        "status": "true",
+        "thumbnails": []
+    },
+    {
+        "title": "flauta",
+        "description": "dulce",
+        "price": 800,
+        "imagen": "sin imagen",
+        "code": "abc124",
+        "stock": 8,
+        "category": "vientos",
+        "status": "true",
+        "thumbnails": []
+    },
+    {
+        "title": "teclado",
+        "description": "midi",
+        "price": 3600,
+        "imagen": "sin imagen",
+        "code": "abc125",
+        "stock": 4,
+        "category": "teclados",
+        "status": "true",
+        "thumbnails": []
+    },
+    {
+        "title": "bateria",
+        "description": "acustica",
+        "price": 2500,
+        "imagen": "sin imagen",
+        "code": "abc126",
+        "stock": 6,
+        "category": "vientos",
+        "status": "true",
+        "thumbnails": []
+    },
+    {
+        "title": "trompeta",
+        "description": "de marcha",
+        "price": 900,
+        "imagen": "sin imagen",
+        "code": "abc127",
+        "stock": 5,
+        "category": "vientos",
+        "status": "true",
+        "thumbnails": []
+    },
+    {
+        "title": "piano",
+        "description": "aleman",
+        "price": 6600,
+        "imagen": "sin imagen",
+        "code": "abc128",
+        "stock": 3,
+        "category": "teclados",
+        "status": "true",
+        "thumbnails": []
+    },
+    {
+        "title": "bajo",
+        "description": "electrico",
+        "price": 1700,
+        "imagen": "sin imagen",
+        "code": "abc129",
+        "stock": 6,
+        "category": "cuerdas",
+        "status": "true",
+        "thumbnails": []
+    },
+    {
+        "title": "saxo",
+        "description": "tenor",
+        "price": 1200,
+        "imagen": "sin imagen",
+        "code": "abc130",
+        "stock": 7,
+        "category": "vientos",
+        "status": "true",
+        "thumbnails": []
+    },
+    {
+        "title": "violin",
+        "description": "de concierto",
+        "price": 1600,
+        "imagen": "sin imagen",
+        "code": "abc131",
+        "stock": 4,
+        "category": "vientos",
+        "status": "true",
+        "thumbnails": []
+    }
+]
