@@ -34,6 +34,18 @@ router.post("/:cid/product/:pid", async (req, res) => {
     }
 })
 
+router.put("/:cid/product/:pid", async (req, res) => {
+    const carritoId = req.params.cid;
+    const productoId = req.params.pid;
+    const quantity = req.body.quantity || 1;
+    try {
+        const carritoActualizado = await cartManager.actualizarProductoDelCarrito(carritoId, productoId, quantity);
+        res.send(carritoActualizado.products);
+    } catch (error) {
+        res.status(500).send("Error al actualizar un producto al carrito");
+    }
+})
+
 router.delete("/:cid", async(req, res) => {
     let id = req.params.cid;
     const carritoEliminado = await cartManager.deleteCarritoById(id);
