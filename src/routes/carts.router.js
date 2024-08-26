@@ -46,6 +46,17 @@ router.put("/:cid/product/:pid", async (req, res) => {
     }
 })
 
+router.delete("/:cid/product/:pid", async(req, res) => {
+    let idc = req.params.cid;
+    let idp = req.params.pid;
+    try {
+        const carritoActualizado = await cartManager.eliminarProductoDelCarrito(idc, idp);
+    res.status(200).send("se vacio el carrito correctamente");
+    } catch (error) {
+        res.status(404).send({message:"error", error:"carrito no encontrado"});
+    }
+})
+
 router.delete("/:cid", async(req, res) => {
     let id = req.params.cid;
     const carritoEliminado = await cartManager.deleteCarritoById(id);

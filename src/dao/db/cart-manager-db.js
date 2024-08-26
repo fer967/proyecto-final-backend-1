@@ -59,6 +59,25 @@ class CartManager {
         }
     }
 
+    async eliminarProductoDelCarrito(carritoId, productoId) {
+        try {
+            const carrito = await this.getCarritoById(carritoId);
+            const indexProducto = carrito.products.findIndex(p => p.product.toString() === productoId);
+            if (indexProducto !== -1) {
+                carrito.products.splice(indexProducto, 1);
+                carrito.markModified("products");     
+                await carrito.save();
+                return carrito;
+            } else {
+                console.log(`Producto con id ${productoId} no encontrado en el carrito.`);
+                return null;
+            }
+        } catch (error) {
+            console.log("Error al eliminar un producto del carrito:", error);
+            throw error; 
+        }
+    }
+
     async deleteCarritoById(id) {
         try {
             const carritoBuscado = await cartModel.findByIdAndDelete(id);
