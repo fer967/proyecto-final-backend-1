@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const CartManager = require("../dao/db/cart-manager-db.js");
 const cartManager = new CartManager();
+const cartModel = require("../dao/models/cart.model.js");
 
 router.post("/", async (req, res) => {
     try {
@@ -11,6 +12,17 @@ router.post("/", async (req, res) => {
         res.status(500).send("Error del servidor");
     }
 })
+
+
+router.get("/", async(req, res) => {
+    try {
+        const carts = await cartModel.find(); 
+        res.status(200).send(carts);
+    } catch (error) {
+        res.status(500).send({status:"error", message:error.message});
+    }
+}
+)
 
 router.get("/:cid", async (req, res) => {
     const carritoID = req.params.cid;
