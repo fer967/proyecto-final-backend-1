@@ -33,8 +33,9 @@ width="60">
 
 ### Descripcion del Proyecto
 
-### Creacion de un Ecommerce para una tienda de instrumentos musicales y accesorios, donde el usuario pueda recorrer el listado de productos, seleccionar y agregar a un carrito su compra, realizar consultas y recibir asesoramiento. Para la persistencia de datos se utiliza el servicio de Atlas Mongo DB y para simular las peticiones Postman
+### Creacion de un Ecommerce para una tienda de instrumentos musicales y accesorios, donde el usuario pueda recorrer el listado de productos, seleccionar y agregar a un carrito su compra, realizar consultas y recibir asesoramiento. Para la persistencia de datos se utiliza el servicio de Atlas Mongo DB y para simular las peticiones Postman. Luego se implementa un CRUD de usuarios junto a un sistema de autorizacion y autenticacion
+
 
 ### Dependencias utilizadas
 
-### `nodemon` `express-handlebars` `mongoose`
+### `nodemon` `express-handlebars` `mongoose` `passport` `bcrypt` `cookie-parser` `jsonwebtoken`
