@@ -6,13 +6,16 @@ const {createHash, isValidPassword} = require("../utils/util.js");
 const passport = require("passport");
 
 router.post("/register", async(req, res) => {
-    const{email, password} = req.body;
+    const{nombre, apellido, edad, email, password} = req.body;
     try {
         const existeUsuario = await UsuarioModel.findOne({ email});
         if(existeUsuario){
             return res.status(400).send("el usuario ya existe en la DB");
         }
         const nuevoUsuario = new UsuarioModel({
+            nombre,
+            apellido,
+            edad,
             email,
             password: createHash(password)
         });
