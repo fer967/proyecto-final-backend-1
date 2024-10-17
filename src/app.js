@@ -2,7 +2,7 @@ const express = require("express");
 const productRouter = require("./routes/products.router.js");
 const cartRouter = require("./routes/carts.router.js");
 const viewsRouter = require("./routes/views.router.js");
-const usuarioRouter = require("./routes/usuario.router.js");
+const userRouter = require("./routes/user.router.js");
 const exphbs = require("express-handlebars");
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
@@ -24,7 +24,7 @@ app.use(passport.initialize());
 app.use("/api/products", productRouter);
 app.use("/api/carts", cartRouter);
 app.use("/", viewsRouter);
-app.use("/api/sessions", usuarioRouter);
+app.use("/api/sessions", userRouter);
 app.use("/", express.static("./src/public"));
 
 const httpServer = app.listen(PUERTO, () => {
