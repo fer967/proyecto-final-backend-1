@@ -7,10 +7,12 @@ const exphbs = require("express-handlebars");
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const initializePassport = require("./config/passport.config.js");
+const app = express();
 
-const app = express(); 
-const PUERTO = 8080;
-require("./database.js");
+// *** adaptacion dotenv ***
+const mongoose = require("mongoose");
+const configObject = require("./config/config.js");
+const {mongo_url, port} = configObject;
 
 app.use(express.json()); 
 app.use(express.urlencoded({extended: true}));
@@ -27,32 +29,16 @@ app.use("/", viewsRouter);
 app.use("/api/sessions", userRouter);
 app.use("/", express.static("./src/public"));
 
-const httpServer = app.listen(PUERTO, () => {
-    console.log(`Escuchando en el http://localhost:${PUERTO}`); 
-})
+// *** adaptacion dotenv ***
+mongoose.connect(mongo_url)
+    .then(() => console.log("conexion a la db"))
+    .catch((error) => console.log("error", error))
+
+app.listen(port, () => console.log(`servidor en http://localhost:${port}`)); 
 
 
 
 
 
 
-/*const exphbs = require("express-handlebars");
-const app = express(); 
-const PUERTO = 8080;
-require("./database.js");
-
-app.use(express.json()); 
-app.use(express.urlencoded({extended: true}));
-app.engine("handlebars", exphbs.engine());
-app.set("view engine", "handlebars");
-app.set("views", "./src/views");
-
-app.use("/api/products", productRouter);
-app.use("/api/carts", cartRouter);
-app.use("/", viewsRouter);
-app.use("/", express.static("./src/public"));
-
-const httpServer = app.listen(PUERTO, () => {
-    console.log(`Escuchando en el http://localhost:${PUERTO}`); 
-}) */
 
