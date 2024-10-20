@@ -7,7 +7,7 @@ const configObject = require("../config/config.js");
 const {secret, tokenSecret} = configObject;
 
 const initializePassport = () => {
-    passport.use("current", new JWTStrategy({
+    passport.use("jwt", new JWTStrategy({
         jwtFromRequest:ExtractJwt.fromExtractors([cookieExtractor]),
         secretOrKey:secret
     }, async (jwt_payload, done) => {

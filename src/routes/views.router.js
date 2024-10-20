@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const productModel = require("../dao/models/product.model.js");
+const passport = require("passport");
+const {soloAdmin, soloUser} = require("../middleware/auth.js");
 
-router.get("/products", async (req, res) => {
+router.get("/products", passport.authenticate("jwt", { session: false }), soloUser, async (req, res) => {
         let page = req.query.page || 1;
         let limit = 2; 
     try {
@@ -32,6 +34,10 @@ router.get("/register", (req, res) => {
 
 router.get("/login", (req, res) => {
     res.render("login");
+})
+
+router.get("/realtimeproducts", passport.authenticate("jwt", { session: false }), soloAdmin, (req, res) => {
+    res.render("realtimeproducts");
 })
 
 module.exports = router; 
