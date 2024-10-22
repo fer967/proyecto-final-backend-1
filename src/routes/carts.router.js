@@ -2,11 +2,12 @@ const express = require("express");
 const router = express.Router();
 const CartManager = require("../dao/db/cart-manager-db.js");
 const cartManager = new CartManager();
-const cartModel = require("../dao/models/cart.model.js");
+const CartModel = require("../dao/models/cart.model.js");
+
 
 router.post("/", async (req, res) => {
     try {
-        const carritoCreado = await cartManager.crearCarrito();
+        const carritoCreado = await cartManager.createCart();
         res.send(carritoCreado);
     } catch (error) {
         res.status(500).send("Error del servidor");
@@ -16,7 +17,7 @@ router.post("/", async (req, res) => {
 
 router.get("/", async(req, res) => {
     try {
-        const carts = await cartModel.find(); 
+        const carts = await CartModel.find(); 
         res.status(200).send(carts);
     } catch (error) {
         res.status(500).send({status:"error", message:error.message});
@@ -27,7 +28,7 @@ router.get("/", async(req, res) => {
 router.get("/:cid", async (req, res) => {
     const carritoID = req.params.cid;
     try {
-        const carritoBuscado = await cartManager.getCarritoById(carritoID);
+        const carritoBuscado = await cartManager.getCartById(carritoID);
         res.send(carritoBuscado.products);
     } catch (error) {
         res.status(500).send("Error no se encuentra carrito");
@@ -39,7 +40,7 @@ router.post("/:cid/product/:pid", async (req, res) => {
     const productoId = req.params.pid;
     const quantity = req.body.quantity || 1;
     try {
-        const carritoActualizado = await cartManager.agregarProductoAlCarrito(carritoId, productoId, quantity);
+        const carritoActualizado = await cartManager.addProductToCart(carritoId, productoId, quantity);
         res.send(carritoActualizado.products);
     } catch (error) {
         res.status(500).send("Error al ingresar un producto al carrito");
@@ -51,7 +52,7 @@ router.put("/:cid/product/:pid", async (req, res) => {
     const productoId = req.params.pid;
     const quantity = req.body.quantity || 1;
     try {
-        const carritoActualizado = await cartManager.actualizarProductoDelCarrito(carritoId, productoId, quantity);
+        const carritoActualizado = await cartManager.updateQuantityProductToCart(carritoId, productoId, quantity);
         res.send(carritoActualizado.products);
     } catch (error) {
         res.status(500).send("Error al actualizar un producto al carrito");
@@ -62,7 +63,7 @@ router.delete("/:cid/product/:pid", async(req, res) => {
     let idc = req.params.cid;
     let idp = req.params.pid;
     try {
-        const carritoActualizado = await cartManager.eliminarProductoDelCarrito(idc, idp);
+        const carritoActualizado = await cartManager.deleteProductFromCart(idc, idp);
     res.status(200).send("se vacio el carrito correctamente");
     } catch (error) {
         res.status(404).send({message:"error", error:"carrito no encontrado"});
@@ -71,7 +72,7 @@ router.delete("/:cid/product/:pid", async(req, res) => {
 
 router.delete("/:cid", async(req, res) => {
     let id = req.params.cid;
-    const carritoEliminado = await cartManager.deleteCarritoById(id);
+    const carritoEliminado = await cartManager.deleteCartById(id);
     if(! carritoEliminado){
         res.status(404).send({message:"error", error:"carrito no encontrado"});
     } else{
