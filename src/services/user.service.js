@@ -8,9 +8,8 @@ class UserService{
         const existeUsuario = await userRepository.getUserByEmail(userData.email);
         if(existeUsuario) throw new Error("el usuario ya existe");
         userData.password = createHash(userData.password);
-        // creo nuevo carrito
-        const nuevoCarrito = await cartManager.crearCarrito();                  // no tengo cartService
-        userData.cart = nuevoCarrito._id;                                    // OK aparece en mongoDB   cart:objectId(".......")
+        const nuevoCarrito = await cartManager.createCart();                  
+        userData.cart = nuevoCarrito._id;                                    
         return await userRepository.createUser(userData);
     }
 
