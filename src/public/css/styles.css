@@ -8,6 +8,39 @@
     gap: 10px;
 }
 
+.real-time-container{
+    width: 100vw;
+    background-color: lavender;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1px;
+    gap: 2px;
+}
+
+.real-time{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.card-body{
+    background-color: rgba(143, 188, 143, 0.587);
+    width: 10vw;
+    height: 41vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: black solid 2px;
+    border-radius: 6px;
+    padding:5px;
+    gap: 1px;
+}
+
 .products{
     display: flex;
     flex-direction: row;

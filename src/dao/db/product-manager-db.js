@@ -2,9 +2,9 @@ const productModel = require("../models/product.model.js");
 
 class ProductManager {
 
-    async addProduct({ title, description, price, img, code, stock, category, thumbnails}) {
+    async addProduct({ title, description, price, code, stock}) {
         try {
-            if (!title || !description || !price || !img || !code || !stock || !category || !thumbnails) {
+            if (!title || !description || !price || !code || !stock) {
                 console.log("Todos los campos son obligatorios");
                 return;
             }
@@ -17,12 +17,8 @@ class ProductManager {
                 title,
                 description,
                 price,
-                img,
                 code,
-                stock,
-                category,
-                status:true,
-                thumbnails
+                stock                
             });
             await nuevoProducto.save();
         } catch (error) {

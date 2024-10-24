@@ -1,8 +1,9 @@
 <div class="contenedor-bienvenida">
     <div>
-        <h2>Bienvenido !!</h2>
+        <h2>Te damos la bienvenida {{user.first_name}} !!</h2>
         <h3>Email: {{user.email}}</h3>
         <h3>Rol: {{user.role}}</h3>
+        <h4>Tu carrito :</h4>
     </div>
     <form class="formulario-logout" action="/api/sessions/logout" method="POST">
         <button type="submit">Logout</button>
