@@ -6,6 +6,11 @@ const {soloAdmin, soloUser} = require("../middleware/auth.js");
 const CartManager = require("../dao/db/cart-manager-db.js");
 const cartManager = new CartManager();
 
+router.get("/", (req, res) => {
+    res.render("admin")
+}) 
+
+
 router.get("/products", passport.authenticate("jwt", { session: false }), soloUser, async (req, res) => {
         let page = req.query.page || 1;
         let limit = 2; 
