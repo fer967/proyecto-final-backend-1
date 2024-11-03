@@ -1,10 +1,11 @@
 <h1>Carrito de Compras</h1>
-
-{{#each products}}
-<div>
-    <p>Producto : {{this.product.title}}</p>
-    <p>Precio : {{this.product.price}}</p>
-    <p>Cantidad : {{this.quantity}}</p>
-    <button>finalizar compra</button>
+<div class="carts">
+    {{#each products}}
+    <div>
+        <p>Producto : {{this.product.title}}</p>
+        <p>Precio : {{this.product.price}}</p>
+        <p>Cantidad : {{this.quantity}}</p>
+    </div>
+    {{/each}}
+    <a href="/tickets">Finalizar compra</a>
 </div>
-{{/each}}

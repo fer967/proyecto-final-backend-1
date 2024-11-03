@@ -10,6 +10,14 @@ router.get("/", (req, res) => {
     res.render("admin")
 }) 
 
+router.get("/carts", (req, res) => {
+    res.render("carts")
+}) 
+
+router.get("/tickets", (req, res) => {
+    res.render("tickets")
+}) 
+
 
 router.get("/products", passport.authenticate("jwt", { session: false }), soloUser, async (req, res) => {
         let page = req.query.page || 1;

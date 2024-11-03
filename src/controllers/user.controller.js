@@ -13,7 +13,8 @@ class UserController {
             const token = jwt.sign({
                 usuario: `${newUser.first_name} ${newUser.last_name}`,
                 email: newUser.email,
-                role: newUser.role
+                role: newUser.role,
+                cart: newUser.cart.toJSON()
             }, secret, {expiresIn: "1h"});
             
             res.cookie(tokenSecret, token, {maxAge: 3600000, httpOnly: true});
